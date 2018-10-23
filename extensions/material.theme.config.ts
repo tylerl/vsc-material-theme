@@ -27,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
   }
 
   // registering the command
-  let command = vscode.commands.registerCommand('material.theme.config', () => {
+  const command = vscode.commands.registerCommand('material.theme.config', () => {
     // the user is going to choose what aspect of theme to config
     vscode.window.showQuickPick(Object.keys(OPTIONS)).then(response => {
       // switching selected option
@@ -40,6 +40,9 @@ export function activate(context: vscode.ExtensionContext) {
         break;
         case Commands.COLOUR_VARIANT:
           THEME_VARIANT();
+        break;
+        default:
+          console.log("Unrecognized command");
         break;
       }
     });
